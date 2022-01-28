@@ -6,11 +6,15 @@
     --blue-light: #5dade2;
     --blue-dark: #2e86c1;
 
-    --settings-background: #f39d12ec;
+    --orange: #f39d12ec;
 }
 
 body {
     font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    height: 100vh;
 }
 
 .header {
@@ -23,7 +27,12 @@ body {
 }
 
 footer{
-    margin-top: 5mm;
+    display: flex;
+    margin-top: auto;
+    min-height: 1cm;
+    background-color: var(--orange);
+    align-items: center;
+    justify-content: center;
 }
 
 .noselect {
@@ -45,7 +54,7 @@ footer{
     margin: 0.5cm 0.5cm 0 0;
     padding: 0.5cm;
     z-index: 2;
-    background-color: var(--settings-background);
+    background-color: var(--orange);
     border: 2px solid #000000;
     border-radius: 0.5cm;
 }
@@ -210,8 +219,20 @@ input[type=text]:focus {
     border: 3px solid var(--blue-dark);
 }
 
+button {
+    width: 2cm;
+    padding: 6px 10px;
+    margin: 8px 0;
+    border: 1px solid var(--blue-dark);
+    border-radius: 6px;
+    background-color: var(--blue-light);
+    color: #FFFFFF;
+    outline: none;
+}
 
-
+button:hover {
+    background-color: var(--blue-dark);
+}
 
 /* Styles for playing field */
 .gridContainer {
