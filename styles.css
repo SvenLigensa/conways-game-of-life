@@ -1,0 +1,252 @@
+:root {
+    --cell-size: 5mm;
+    --dead-cell-color: #FFFFFF;
+    --living-cell-color: #000000;
+
+    --blue-light: #5dade2;
+    --blue-dark: #2e86c1;
+
+    --settings-background: #f39d12ec;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5cm;
+    max-height: 25vh;
+}
+
+footer{
+    margin-top: 5mm;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+#settings {
+    position: absolute;
+    display: none;
+    width: 14cm;
+    height: 5cm;
+    top:0;
+    right:0;
+    margin: 0.5cm 0.5cm 0 0;
+    padding: 0.5cm;
+    z-index: 2;
+    background-color: var(--settings-background);
+    border: 2px solid #000000;
+    border-radius: 0.5cm;
+}
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* Settings Icon: https://dev.to/webdeasy/10-awesome-css-hamburger-menus-1iho -> #6 -> icon5 */
+.settingsIcon {
+    position: absolute;
+    top:0;
+    right:0;
+    margin: 1cm 1cm 0 0;
+    display: inline-block;
+    cursor: pointer;
+    z-index: 3;
+    width: 35px;
+    height: 30px;
+    /* margin: 10px 10px; */
+}
+
+.settingsIcon span{
+    background-color:#000000;
+    position: absolute;
+    border-radius: 2px;
+    transition: .3s cubic-bezier(.8, .5, .2, 1.4);
+    width:100%;
+    height: 4px;
+    transition-duration: 500ms
+}
+
+.settingsIcon span:nth-child(1){
+    top:0px;
+    left: 0px;
+}
+
+.settingsIcon span:nth-child(2){
+    top:13px;
+    left: 0px;
+    opacity:1;
+}
+
+.settingsIcon span:nth-child(3){
+    bottom:0px;
+    left: 0px;
+}
+
+.settingsIcon:not(.open):hover span:nth-child(1){
+    transform: rotate(-3deg) scaleY(1.1);
+}
+
+.settingsIcon:not(.open):hover span:nth-child(2){
+    transform: rotate(3deg) scaleY(1.1);
+}
+
+.settingsIcon:not(.open):hover span:nth-child(3){
+    transform: rotate(-4deg) scaleY(1.1);
+}
+
+.settingsIcon.open span:nth-child(1){
+    transform: rotate(45deg);
+    top: 13px;
+}
+
+.settingsIcon.open span:nth-child(2){
+    opacity:0;
+}
+
+.settingsIcon.open span:nth-child(3){
+    transform: rotate(-45deg);
+    top: 13px;
+}
+
+
+
+#upsSlider {
+    background-color: transparent;
+}
+
+/* https://dev.to/_phzn/styling-range-sliders-with-css-4lgl */
+input[type="range"] {
+    -webkit-appearance: none;
+}
+   
+input[type="range"]:focus {
+    outline: none;
+}
+   
+input[type="range"]::-webkit-slider-runnable-track {
+    background: var(--blue-light);
+    height: 5px;
+}
+
+input[type="range"]::-moz-range-track {
+    background: var(--blue-light);
+    height: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: var(--blue-dark);
+    margin-top: -5px;
+    border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+    background: var(--blue-dark);
+    margin-top: -5px;
+    border-radius: 50%;
+}
+
+/* Hide up and down arrows on other browsers */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield; /* Hide up and down arrows on Firefox */
+    width: 1cm;
+    padding: 6px 10px;
+    margin: 8px 0;
+    border: 1px solid var(--blue-dark);
+    border-radius: 6px;
+    background-color: var(--blue-light);
+    color: #FFFFFF;
+}
+
+input[type=number]:focus {
+    outline: none;
+    border: 3px solid var(--blue-dark);
+}
+
+input[type=text] {
+    width: 2cm;
+    padding: 6px 10px;
+    margin: 8px 0;
+    border: 1px solid var(--blue-dark);
+    border-radius: 6px;
+    background-color: var(--blue-light);
+    color: #FFFFFF;
+}
+
+input[type=text]:focus {
+    outline: none;
+    border: 3px solid var(--blue-dark);
+}
+
+
+
+
+/* Styles for playing field */
+.gridContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.gridContainer2 {
+    overflow: auto;
+    width: 95%;
+    max-height: 75vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0mm;
+    table-layout: fixed;
+    width: 0mm;
+}
+
+td {
+    border: 1pt solid #000;
+    background-color: var(--dead-cell-color);
+    height: var(--cell-size);
+    width: var(--cell-size);
+}
+
+td.living {
+    background-color: var(--living-cell-color);
+}
+
+

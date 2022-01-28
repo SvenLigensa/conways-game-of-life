@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Conway's Game of Life</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="styles.css"/>
+</head>
+
+<div id="overlay" onclick="toggleSettings()"></div>
+
+<body>
+	<div class="header">
+		<h1 class="noselect">Conway's Game of Life</h1>
+
+		<div class="settingsIcon" id="settingsIcon" onclick="toggleSettings()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+
+		<div id="settings">
+			<h1>Configuration</h1>
+			<label for="size">Size of Grid (Changing it will clear current state)</label>
+			<input type="number" id="widthField" placeholder="Width" value="20">
+			<label for="size">x</label>
+			<input type="number" id="heightField" placeholder="Height" value="20">
+			<br>
+			<label for="ups">Animation Speed</label>
+			<input type="range" id="upsSlider" name="ups" min="0.5" max="50">
+			<br>
+			<label for="variation">Variation B</label>
+			<input type="text" id="variationBorn" placeholder="#LivingNeighbours needed to be born" value="23">
+			<label for="variation">/S</label>
+			<input type="text" id="variationSurvive" placeholder="#LivingNeighbours needded to survive" value="3">
+		</div>
+	</div>
+	<main>
+		<div class="gridContainer">
+			<div class="gridContainer2">
+				<table id="grid"></table>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<button id="startStop" onclick="toggleSimulation()">Start</button>
+	</footer>
+	<script src="default.js" type="text/javascript"></script>
+</body>
+</html>
