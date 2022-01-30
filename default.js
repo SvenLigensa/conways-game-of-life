@@ -5,8 +5,8 @@ var intervalID;
 var showSettings = false;
 
 var rules = [
-    [false, false, true, true, false, false, false, false, false],
-    [false, false, false, true, false, false, false, false, false]
+    [false, false, false, true, false, false, false, false, false], /* S */
+    [false, false, true, true, false, false, false, false, false] /* B */
 ];
 
 function generateEmptyState()
@@ -130,7 +130,7 @@ function update()
                     if (oldState[row + rowOffset][column + columnOffset]) ++numberOfLivingNeighbours;
                 }
             }
-            newRowState.push(rules[oldState[row][column] ? 0 : 1][numberOfLivingNeighbours]);
+            newRowState.push(rules[oldState[row][column] ? 1 : 0][numberOfLivingNeighbours]);
         }
         newState.push(newRowState);
     }
