@@ -1,13 +1,21 @@
-var running = false;
 var width = widthField.value;
 var height = heightField.value;
-var intervalID;
+var running = false;
 var showSettings = false;
+var intervalID;
 
 var rules = [
     [false, false, false, true, false, false, false, false, false], /* S */
     [false, false, true, true, false, false, false, false, false] /* B */
 ];
+
+const root = document.documentElement;
+const settingsIcon = document.getElementById("settingsIcon");
+const grid = document.getElementById("grid");
+const startStop = document.getElementById("startStop"); /* Footer button to start or stop simulation */
+const upsSlider = document.getElementById("upsSlider"); /* Slider setting the Updates per Second */
+const primaryColor = document.getElementById("primary");
+const secondaryColor = document.getElementById("secondary");
 
 function generateEmptyState()
 {
@@ -21,8 +29,6 @@ function generateEmptyState()
     }
     return state;
 }
-
-const settingsIcon = document.getElementById("settingsIcon");
 
 function toggleSettings()
 {
@@ -57,14 +63,14 @@ function commitSettings()
         rules[0][i] = (newBorn.includes(i.toString())) 
         rules[1][i] = (newSurvive.includes(i.toString()))
     }
+
+    // Commit new speed
+    updateUps();
+
+    // Commit new colors
+    root.style.setProperty('--primary-light', primaryColor.value);
+    root.style.setProperty('--secondary', secondaryColor.value);
 }
-
-
-
-
-const grid = document.getElementById("grid");
-const startStop = document.getElementById("startStop");
-const upsSlider = document.getElementById("upsSlider");
 
 function generateGrid(width, height, state)
 {
@@ -90,14 +96,24 @@ function generateGrid(width, height, state)
 
 function toggleSimulation()
 {
-    if (running) {
-        startStop.innerText = "Start";
-        window.clearInterval(intervalID);
-    } else {
-        startStop.innerText = "Stop";
-        intervalID = window.setInterval(update, 1000/upsSlider.value);
-    }
     running = !running;
+    updateUps();
+    if (running) startStop.innerText = "Stop";
+    else startStop.innerText = "Start";
+}
+
+function updateUps()
+{
+    if (running) {
+        if (intervalID)
+            window.clearInterval(intervalID);
+        intervalID = window.setInterval(update, 1000/upsSlider.value);
+        console.log("ups updated to: " + 1000/upsSlider.value);
+    }
+    else {
+        window.clearInterval(intervalID);
+        console.log("cleared interval");
+    }
 }
 
 function readState()

@@ -7,21 +7,16 @@
 	<link rel="stylesheet" href="styles.css"/>
 </head>
 
-<div id="overlay" onclick="toggleSettings()"></div>
-
 <body>
+	<div id="overlay" onclick="toggleSettings()"></div>
 	<div class="header">
 		<h1 class="noselect">Conway's Game of Life</h1>
-
 		<div class="settingsIcon" id="settingsIcon" onclick="toggleSettings()">
-			<span></span>
-			<span></span>
-			<span></span>
+			<span></span><span></span><span></span>
 		</div>
-
 		<div id="settings" class="noselect">
 			<h1>Configuration</h1>
-			<label for="size">Size of Grid (Changing it will clear current state)</label>
+			<label for="size">Size of Grid (Change will clear field)</label>
 			<input type="number" id="widthField" placeholder="Width" value="20">
 			<label for="size">x</label>
 			<input type="number" id="heightField" placeholder="Height" value="20">
@@ -33,11 +28,16 @@
 			<input type="text" id="variationBorn" placeholder="#LivingNeighbours needed to be born" value="3">
 			<label for="variation">/S</label>
 			<input type="text" id="variationSurvive" placeholder="#LivingNeighbours needded to survive" value="23">
+			<br>
+			<label for="primary">Primary Color:</label>
+			<input type="color" id="primary" name="primary" value="#1bbe25">
+			<label for="secondary">Secondary Color:</label>
+			<input type="color" id="secondary" name="secondary" value="#93d898">
 		</div>
 	</div>
 	<main>
-		<div class="gridContainer">
-			<div class="gridContainer2">
+		<div class="gridContainerOuter">
+			<div class="gridContainerInner">
 				<table id="grid"></table>
 			</div>
 		</div>
@@ -47,5 +47,4 @@
 	</footer>
 	<script src="default.js" type="text/javascript"></script>
 </body>
-
 </html>

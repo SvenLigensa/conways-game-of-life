@@ -1,12 +1,10 @@
 :root {
-    --cell-size: 5mm;
+    --primary-dark: #000000;
+    --primary-light: #1bbe25;
+    --secondary: #93d898;
     --dead-cell-color: #FFFFFF;
-    --living-cell-color: #000000;
-
-    --blue-light: #5dade2;
-    --blue-dark: #2e86c1;
-
-    --orange: #f39d12ec;
+    --living-cell-color: var(--primary-light);
+    --cell-size: 5mm;
 }
 
 body {
@@ -23,13 +21,12 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 1.5cm;
-    max-height: 25vh;
 }
 
 footer{
     display: flex;
     margin-top: auto;
-    background-color: var(--orange);
+    background-color: var(--secondary);
     align-items: center;
     justify-content: center;
     border-top: 2px solid #000000;
@@ -48,13 +45,13 @@ footer{
     position: absolute;
     display: none;
     width: 14cm;
-    height: 5cm;
+    height: 6.5cm;
     top:0;
     right:0;
     margin: 0.5cm 0.5cm 0 0;
     padding: 0.5cm;
     z-index: 2;
-    background-color: var(--orange);
+    background-color: var(--secondary);
     border: 2px solid #000000;
     border-radius: 0.5cm;
 }
@@ -155,12 +152,12 @@ input[type="range"]:focus {
 }
    
 input[type="range"]::-webkit-slider-runnable-track {
-    background: var(--blue-light);
+    background: var(--primary-light);
     height: 5px;
 }
 
 input[type="range"]::-moz-range-track {
-    background: var(--blue-light);
+    background: var(--primary-light);
     height: 5px;
 }
 
@@ -168,7 +165,7 @@ input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 15px;
     width: 15px;
-    background: var(--blue-dark);
+    background: var(--primary-dark);
     margin-top: -5px;
     border-radius: 50%;
 }
@@ -176,7 +173,7 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
     height: 15px;
     width: 15px;
-    background: var(--blue-dark);
+    background: var(--primary-dark);
     margin-top: -5px;
     border-radius: 50%;
 }
@@ -193,63 +190,63 @@ input[type=number] {
     width: 1cm;
     padding: 6px 10px;
     margin: 8px 0;
-    border: 1px solid var(--blue-dark);
+    border: 1px solid var(--primary-dark);
     border-radius: 6px;
-    background-color: var(--blue-light);
+    background-color: var(--primary-light);
     color: #FFFFFF;
 }
 
 input[type=number]:focus {
     outline: none;
-    border: 3px solid var(--blue-dark);
+    border: 3px solid var(--primary-dark);
 }
 
 input[type=text] {
     width: 2cm;
     padding: 6px 10px;
     margin: 8px 0;
-    border: 1px solid var(--blue-dark);
+    border: 1px solid var(--primary-dark);
     border-radius: 6px;
-    background-color: var(--blue-light);
+    background-color: var(--primary-light);
     color: #FFFFFF;
 }
 
 input[type=text]:focus {
     outline: none;
-    border: 3px solid var(--blue-dark);
+    border: 3px solid var(--primary-dark);
 }
 
 button {
     font-size: 24px;
     padding: 5px 10px;
     margin: 8px 0;
-    border: 1px solid var(--blue-dark);
+    border: 1px solid var(--primary-dark);
     border-radius: 6px;
-    background-color: var(--blue-light);
+    background-color: var(--primary-light);
     color: #FFFFFF;
     outline: none;
 }
 
 button:hover {
-    background-color: var(--blue-dark);
+    background-color: var(--primary-dark);
 }
 
 /* Styles for playing field */
-.gridContainer {
+.gridContainerOuter {
+    width: 90vw;
+    height: 80vh;
+    margin: auto;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
-.gridContainer2 {
-    overflow: auto;
-    width: 95%;
-    max-height: 75vh;
+.gridContainerInner {
+    max-width: 90vw;
+    max-height: 80vh;
+    margin: auto;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    overflow: auto;
 }
 
 table {
