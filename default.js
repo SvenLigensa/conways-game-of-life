@@ -68,8 +68,48 @@ function commitSettings()
     updateUps();
 
     // Commit new colors
-    root.style.setProperty('--primary-light', primaryColor.value);
-    root.style.setProperty('--secondary', secondaryColor.value);
+    var hsl1 = hexToHSL(primaryColor.value);
+    var hsl2 = hexToHSL(secondaryColor.value);
+    root.style.setProperty("--primary-light", "hsl(" + hsl1[0] + ", " + hsl1[1] + "%, " + hsl1[2] + "%");
+    root.style.setProperty("--primary-dark", "hsl(" + hsl1[0] + ", " + hsl1[1] + "%, " + hsl1[2] * 2/3 + "%");
+    root.style.setProperty("--secondary", "hsl(" + hsl2[0] + ", " + hsl2[1] + "%, " + hsl2[2] + "%");
+}
+
+// hex in form: #rrggbb
+function hexToHSL(hex)
+{
+    var r = parseInt(hex.substring(1, 3), 16);
+    var g = parseInt(hex.substring(3, 5), 16);
+    var b = parseInt(hex.substring(5, 7), 16);
+    r /= 255, g /= 255, b /= 255;
+    var max = Math.max(r, g, b),
+        min = Math.min(r, g, b);
+    var h, s, l = (max + min) / 2;
+    if (max == min) {
+        h = s = 0;
+    } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+        case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+        case g:
+            h = (b - r) / d + 2;
+            break;
+        case b:
+            h = (r - g) / d + 4;
+            break;
+        }
+        h /= 6;
+    }
+    let hsl = [];
+    hsl[0] = Math.round(360 * h);
+    s = s * 100;
+    hsl[1] = Math.round(s);
+    l = l * 100;
+    hsl[2] = Math.round(l);
+    return hsl;
 }
 
 function generateGrid(width, height, state)
@@ -108,12 +148,8 @@ function updateUps()
         if (intervalID)
             window.clearInterval(intervalID);
         intervalID = window.setInterval(update, 1000/upsSlider.value);
-        console.log("ups updated to: " + 1000/upsSlider.value);
     }
-    else {
-        window.clearInterval(intervalID);
-        console.log("cleared interval");
-    }
+    else window.clearInterval(intervalID);
 }
 
 function readState()

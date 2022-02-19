@@ -1,7 +1,7 @@
 :root {
-    --primary-dark: #000000;
-    --primary-light: #1bbe25;
-    --secondary: #93d898;
+    --primary-dark: hsl(124, 75%, 28.67%);
+    --primary-light: hsl(124, 75%, 43%);
+    --secondary: hsl(124, 47%, 71%);
     --dead-cell-color: #FFFFFF;
     --living-cell-color: var(--primary-light);
     --cell-size: 5mm;
@@ -13,6 +13,10 @@ body {
     flex-direction: column;
     margin: 0;
     height: 100vh;
+}
+
+h1 {
+    color: var(--primary-light);
 }
 
 .header {
