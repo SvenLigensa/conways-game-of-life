@@ -76,10 +76,14 @@ footer{
 
 #gh {
     position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 0 10px 10px 0;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.5;
     z-index:999;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Settings Icon: https://dev.to/webdeasy/10-awesome-css-hamburger-menus-1iho -> #6 -> icon5 */
