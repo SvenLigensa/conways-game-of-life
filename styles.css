@@ -85,7 +85,6 @@ footer{
     z-index: 3;
     width: 35px;
     height: 30px;
-    /* margin: 10px 10px; */
 }
 
 .settingsIcon span{
@@ -270,5 +269,3 @@ td {
 td.living {
     background-color: var(--living-cell-color);
 }
-
-
