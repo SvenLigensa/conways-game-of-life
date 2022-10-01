@@ -74,6 +74,14 @@ footer{
     cursor: pointer;
 }
 
+#gh {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 0 10px 10px 0;
+    z-index:999;
+}
+
 /* Settings Icon: https://dev.to/webdeasy/10-awesome-css-hamburger-menus-1iho -> #6 -> icon5 */
 .settingsIcon {
     position: absolute;
